@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: %i[ show edit update destroy ]
+  before_action :set_story, only: %i[ show edit update destroy toggle_status ]
 
   # GET /stories or /stories.json
   def index
@@ -54,6 +54,15 @@ class StoriesController < ApplicationController
       format.html { redirect_to stories_url, notice: "Story was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_status
+    if @story.draft?
+      @story.published!
+    elsif @story.published?
+      @story.draft!
+    end
+    redirect_to stories_url, notice: "Story Status is Updated." 
   end
 
   private
