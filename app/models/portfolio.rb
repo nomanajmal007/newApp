@@ -9,4 +9,13 @@ class Portfolio < ApplicationRecord
     #2nd way to fing specific records with subtitle ANGULAR
     scope :ruby_on_rails_portfolios, ->{where(subtitle:"Ruby on Rails")}
 
+
+    after_initialize :set_defaults
+
+    def set_defaults
+        self.main_image ||="http://placehold.it/600x400"
+        self.thumg_image ||="http://placehold.it/350x150"
+    end
+
+
 end

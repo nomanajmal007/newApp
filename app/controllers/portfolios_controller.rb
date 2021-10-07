@@ -1,7 +1,4 @@
 class PortfoliosController < ApplicationController
-  def index
-      @portfolio = Portfolio.angular
-  end
 
   def index
     @portfolio = Portfolio.all
@@ -16,6 +13,10 @@ class PortfoliosController < ApplicationController
   def rubyonrails
       @rubyonrails=Portfolio.ruby_on_rails_portfolios
   end
+
+  def new
+    @portfolio=Portfolio.new
+end
 
 
   def create
@@ -57,6 +58,7 @@ class PortfoliosController < ApplicationController
       end
   end
 
+  
 
 
   def show
