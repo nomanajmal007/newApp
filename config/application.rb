@@ -34,5 +34,9 @@ module Newapp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+
+    #For Allowing to all unpermitted parameters to enter in system
+    #config.action_controller.permit_all_parameters = true
   end
 end
