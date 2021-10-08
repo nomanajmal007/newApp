@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: %i[ show edit update destroy ]
+  before_action :set_story, only: %i[ show edit update destroy toggle_status]
 
   # GET /stories or /stories.json
   def index
@@ -55,6 +55,16 @@ class StoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def toggle_status
+    if(@story.published?)
+      @story.draft!
+    elsif(@story.draft?)
+      @story.published!
+    end
+    redirect_to stories_url, notice: "Story is Updated." 
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
