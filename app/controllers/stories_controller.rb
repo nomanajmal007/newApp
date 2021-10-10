@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: %i[ show edit update destroy toggle_status]
+  layout "story"
 
   # GET /stories or /stories.json
   def index
